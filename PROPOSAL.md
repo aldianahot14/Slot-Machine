@@ -77,7 +77,7 @@ Plan for the week:
 
 11/30 --> Complete proposal, push TTT game 
 <br>
-12/01 --> research different types of ways I can start spinning the machine. See how I can speed and slow the the machine at the end of the game. 
+12/01 --> research different types of ways I can start spinning the machine. See how I can speed and slow the the machine at the end of the game. Creat a README!
 <br>
 12/02 --> start to create basic code. How will I randomize the game? 
 <br>
