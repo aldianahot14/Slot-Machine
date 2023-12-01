@@ -29,10 +29,10 @@ FUNCTION checkWinningCombination():
 Check if the current reels combination is a winning one
 If won then return it to true
 If there is no winning comnbo then Fasle.
-
-*Function to handle player input
 Check for winning combinations
 IF checkWinningCombination():
+
+*Function to handle player input
 DISPLAY "Congratulations! You've won!"
 ELSE: DISPLAY "Sorry, you didn't win. Try again!"
 
@@ -61,13 +61,12 @@ Main game loop
 #### MVP Goals
 
 - As a player, I want to spin the reels and see visual feedback on the outcome, including (if i am lucky) winning combinations, so that I can understand when I win.
-- As a player, I would like the game to display a clear message or image when I hit a winning combination, so that I feel like a winner.
-- As a player, I want the game to be user-friendly.
-- As a player, I expect the game to have basic sound effects or background music to enhance the gaming experience, as well as sound effects for when I win or loose.
+- As a player, I would like the game to display a clear image when I hit a winning combination, so that I feel like a winner.
+- As a player, I want the game to be user-friendly by having a clear instructions on the game. 
 - As a player, I would like the option to restart the game with a new spin after a win or loss, so that I can continue playing.
   
 #### Stretch Goals
-
+- As a player, I expect the game to have basic sound effects or background music to enhance the gaming experience, as well as sound effects for when I win or loose.
 - As a player, I would like a victory animation when I win the game, a good idea would be confetti.
 - As a player, I want a feature to track my game history and stats.
 
@@ -78,15 +77,15 @@ Plan for the week:
 
 11/30 --> Complete proposal, push TTT game 
 <br>
-12/01 --> Creat HTML, JS and CSS files
+12/01 --> research different types of ways I can start spinning the machine. See how I can speed and slow the the machine at the end of the game. 
 <br>
-12/02 --> start to create basic code 
+12/02 --> start to create basic code. How will I randomize the game? 
 <br>
-12/03 --> Start to add functions 
+12/03 --> Start to add functions into java script! at least take 3/4 hours when you get home!
 <br>
-12/04 --> work on styling 
+12/04 --> work on styling - see if you have time to add one stretch goal ? 
 <br>
-12/05 --> revist code and challenge your self with stretch goals (at least use one)
+12/05 --> revist code. what can you improve ?
 <br>
 12/06 & 12/07 --> revist code, make sure everything is functioning properly 
 <br>
