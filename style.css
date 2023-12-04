@@ -1,1 +1,58 @@
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
+*,
+*::before,
+*::after{
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    background: pink;
+    display: flex;
+    flex-direction: column;  
+    justify-content: center;
+    align-items: center;
+}
+
+.doors {
+    display: flex;
+}
+
+.door {
+    background: #c93667;
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4) inset;
+    width: 110px;
+    height: 170px;
+    overflow: hidden;
+    border-radius: 1ex;
+    margin: 1ch;
+    border: 10px solid #c93667;
+}
+
+.boxes {
+    transition: transform 1s ease-in-out;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    font-size: 4rem;
+    
+    
+}
