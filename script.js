@@ -23,7 +23,7 @@
     let winCount = 0;
     let lossCount = 0;
 
-    // Define score display elements
+    // Define score display elements so they player can see it below the boxes!
     const winCountDisplay = document.querySelector('#winCount');
     const lossCountDisplay = document.querySelector('#lossCount');
 
@@ -54,9 +54,8 @@
 
             // Set the transform property of the boxes element to translate along the Y-axis by 0 pixels
             boxes.style.transform = "translateY(0)";
-
-            // Pause the execution for a certain duration to simulate the spinning animation
-            await new Promise((resolve) => setTimeout(resolve, duration * 100));
+       
+        
         }
 
         // Check the result of the spin using checkResult function
@@ -81,7 +80,7 @@
             return emoji === firstEmoji;
         });
 
-        return allDoorsSame; // Return true if all doors are the same, indicating a win
+        return allDoorsSame; // Return true if all doors are the same, which means a win
                              // Return false if doors have different emojis
     }
 
@@ -178,3 +177,51 @@
         }
     }
 
+        // Define reset function
+    function reset() {
+        // For each door
+        for (const door of doors) {
+            // Clone the current boxes element for each door
+            const boxes = door.querySelector(".boxes");
+            const boxesClone = boxes.cloneNode(false);
+
+            // Display the mouth emoji "👄" in the reset box
+            const resetBox = document.createElement("div");
+            resetBox.classList.add("box");
+            resetBox.style.width = door.clientWidth + "px";
+            resetBox.style.height = door.clientHeight + "px";
+            boxesClone.appendChild(resetBox);
+            resetBox.textContent = "👄";
+
+            // Set door's spinned data attribute to "0"
+            door.dataset.spinned = "0";
+
+            // Replace the current boxes with the cloned boxes with the mouth emoji
+            door.replaceChild(boxesClone, boxes);
+
+            // Add event listener to remove the mouth emoji when spinning
+            const spinnerButton = document.querySelector("#spinner");
+            spinnerButton.addEventListener("click", function removeEmoji() {
+                door.replaceChild(boxes, boxesClone);
+                spinnerButton.removeEventListener("click", removeEmoji);
+            });
+            
+
+        }
+
+
+        // Clear the winning/losing message
+        document.querySelector('.info').textContent = "";
+    }
+
+    // Define a function to reset the score
+    function resetScore() {
+        winCount = 0;
+        lossCount = 0;
+        winCountDisplay.textContent = winCount;
+        lossCountDisplay.textContent = lossCount;
+    }
+
+    // Call init function to initialize the slot machine when the page loads
+    init();
+})();
