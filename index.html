@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
 
@@ -7,12 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <title>Slot Machine</title>
-
 </head>
-
 
 <body>
     <div id="app">
+
         <div class="doors">
             <div class="door">
                 <div class="boxes">
@@ -20,7 +20,7 @@
             </div>
 
             <div class="door">
-                <div class="boxes"> 
+                <div class="boxes">
                 </div>
             </div>
 
@@ -35,12 +35,19 @@
             <button id="reseter">Reset</button>
         </div>
 
+        <!-- Add the score display and reset score button here -->
+        <div id="score">
+            <span>Wins: <span id="winCount">0</span></span>
+            <span>Losses: <span id="lossCount">0</span></span>
+        </div>
+        <button id="resetScore">Reset Score</button>
+
         <p class="info"></p>
     </div>
 
     <p class="feeling-lucky-text">Feeling Lucky?</p>
-    
 
     <script src="./script.js"></script>
 </body>
+
 </html>

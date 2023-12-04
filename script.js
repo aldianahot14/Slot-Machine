@@ -13,35 +13,51 @@
         "💋",
     ];
 
-    // Display emojis in the information section in hTML 
+    // Display emojis in the information section in HTML
     document.querySelector('.info').textContent = items.join(" ");
 
     // Define doors variable to store the door elements
     const doors = document.querySelectorAll(".door");
 
-    // Define spinner and reset button event listeners!!
+    // Add these variables to keep track of wins and losses
+    let winCount = 0;
+    let lossCount = 0;
+
+    // Define score display elements
+    const winCountDisplay = document.querySelector('#winCount');
+    const lossCountDisplay = document.querySelector('#lossCount');
+
+    // Update the initial score display
+    winCountDisplay.textContent = winCount;
+    lossCountDisplay.textContent = lossCount;
+
+    // Define spinner and reset button event listeners
     document.querySelector("#spinner").addEventListener("click", spin);
     document.querySelector("#reseter").addEventListener("click", reset);
 
-    // Define spin function-async will return a promise 
+    // Define reset score button event listener
+    const resetScoreButton = document.getElementById('resetScore');
+    resetScoreButton.addEventListener('click', resetScore);
+
+    // Define spin function-async will return a promise
     async function spin() {
-        // Call init function with parameters for animation 
+        // Call init function with parameters for animation
         init(false, 1, 2);
 
-      // For each door, animate the door boxes to simulate spinning
-for (const door of doors) {
-    // Get the boxes element within the current door using the "querySelector" 
-    const boxes = door.querySelector(".boxes");
+        // For each door, animate the door boxes to simulate spinning
+        for (const door of doors) {
+            // Get the boxes element within the current door using "querySelector"
+            const boxes = door.querySelector(".boxes");
 
-    // Get the transition duration of the boxes element
-    const duration = parseInt(boxes.style.transitionDuration);
+            // Get the transition duration of the boxes element
+            const duration = parseInt(boxes.style.transitionDuration);
 
-    // Set the transform property of the boxes element to translate along the Y-axis by 0 pixels
-    boxes.style.transform = "translateY(0)";
+            // Set the transform property of the boxes element to translate along the Y-axis by 0 pixels
+            boxes.style.transform = "translateY(0)";
 
-    // Pause the execution for a certain duration to simulate the spinning animation
-    await new Promise((resolve) => setTimeout(resolve, duration * 100));
-}
+            // Pause the execution for a certain duration to simulate the spinning animation
+            await new Promise((resolve) => setTimeout(resolve, duration * 100));
+        }
 
         // Check the result of the spin using checkResult function
         const result = checkResult();
@@ -66,16 +82,20 @@ for (const door of doors) {
         });
 
         return allDoorsSame; // Return true if all doors are the same, indicating a win
-                            // Return false if doors have different emojis
+                             // Return false if doors have different emojis
     }
 
     // Define displayWin function
     function displayWin() {
-        document.querySelector('.info').textContent = "Congratulations! You Win!";
+        winCount++;
+        winCountDisplay.textContent = winCount;
+        document.querySelector('.info').textContent = "You're lucky! You Win!";
     }
 
     // Define displayLoss function
     function displayLoss() {
+        lossCount++;
+        lossCountDisplay.textContent = lossCount;
         document.querySelector('.info').textContent = "Sorry, You're not so lucky. Try Again!";
     }
 
@@ -158,4 +178,3 @@ for (const door of doors) {
         }
     }
 
-    
