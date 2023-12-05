@@ -13,13 +13,13 @@
         "💋",
     ];
 
-    // Display emojis in the information section in HTML
+    // Display emojis in the information section where it's places in the HTML
     document.querySelector('.info').textContent = items.join(" ");
 
     // Define doors variable to store the door elements
     const doors = document.querySelectorAll(".door");
 
-    // Add these variables to keep track of wins and losses
+    //  these var will keep track of wins and losses
     let winCount = 0;
     let lossCount = 0;
 
@@ -35,7 +35,7 @@
     document.querySelector("#spinner").addEventListener("click", spin);
     document.querySelector("#reseter").addEventListener("click", reset);
 
-    // Define reset score button event listener
+    // select the HTML with id to reset the score Define reset score button event listener
     const resetScoreButton = document.getElementById('resetScore');
     resetScoreButton.addEventListener('click', resetScore);
 
@@ -53,9 +53,9 @@
             const duration = parseInt(boxes.style.transitionDuration);
 
             // Set the transform property of the boxes element to translate along the Y-axis by 0 pixels
+            //preparing for spinning effect 
             boxes.style.transform = "translateY(0)";
-       
-        
+    
         }
 
         // Check the result of the spin using checkResult function
@@ -71,10 +71,12 @@
 
     // Define checkResult function
     function checkResult() {
-        // Get the emoji from the first door
+
+
+        // check the emoji from the first door
         const firstEmoji = doors[0].querySelector(".box").textContent;
 
-        // Check if all doors have the same emoji
+        // Check if all doors have the same emoji 'spread' 
         const allDoorsSame = [...doors].every(door => {
             const emoji = door.querySelector(".box").textContent;
             return emoji === firstEmoji;
@@ -109,38 +111,48 @@
                 return; // Return to prevent reinitialization
             }
 
-            // Clone the current boxes element for each door
+            // Find the first element inside the 'door' element with the class 'boxes'
             const boxes = door.querySelector(".boxes");
+        // Create a copy of the 'boxes' element without copying its children
             const boxesClone = boxes.cloneNode(false);
 
-            // Create a pool array with a placeholder emoji "👄"
+            // Create a pool array with a placeholder emoji "👄" so it can always show when reset
             const pool = ["👄"];
 
-            // If it's not the first initialization
+            // If it's not true
             if (!firstInit) {
                 // Shuffle and push emojis from items array into the pool
                 const arr = [];
                 for (let n = 0; n < (groups > 0 ? groups : 1); n++) {
+                //The loop continues as long as n is less than the value inside the parentheses. each time n will be increaed by 1 ++
+
+                //in the () the (? :) is what  checks if groups is greater than 0.
                     arr.push(...items);
                 }
-                pool.push(...shuffle(arr));
 
-                // Add event listeners for transition start and end to handle animation
+                pool.push(...shuffle(arr));
+                // shuffling the elements in the array.
+
+
+                // Add an event listener to 'boxesClone' for the 'transitionstart' event
                 boxesClone.addEventListener(
                     "transitionstart",
                     function () {
+                        // When the transition starts, do the following:
+                         // Set the 'spinned' attribute of the 'door' to "1"
                         door.dataset.spinned = "1";
                         this.querySelectorAll(".box").forEach((box) => {
-                            box.style.filter = "blur(1px)";
+                            //box.style.filter = "blur(1px)";
                         });
                     },
                     { once: true }
                 );
+                
                 boxesClone.addEventListener(
                     "transitionend",
                     function () {
                         this.querySelectorAll(".box").forEach((box, index) => {
-                            box.style.filter = "blur(0)";
+                            //box.style.filter = "blur(0)";
                             if (index > 0) this.removeChild(box);
                         });
                     },
@@ -159,7 +171,9 @@
 
                 // Set transition duration and animate the boxes to simulate spinning
                 boxesClone.style.transitionDuration = `${duration > 0 ? duration : 1}s`;
+                // Move the cloned boxes upward to simulate spinning
                 boxesClone.style.transform = `translateY(-${door.clientHeight * (pool.length - 1)}px)`;
+                // Replace the original boxes with the cloned boxes
                 door.replaceChild(boxesClone, boxes);
             }
         }
@@ -186,11 +200,16 @@
             const boxesClone = boxes.cloneNode(false);
 
             // Display the mouth emoji "👄" in the reset box
+            //create a new <div> element
             const resetBox = document.createElement("div");
+            //add the box class to the new element
             resetBox.classList.add("box");
+            //set the width of the new element to mstch the width of the 'door'
             resetBox.style.width = door.clientWidth + "px";
-            resetBox.style.height = door.clientHeight + "px";
+            //same with the height 
+            resetBox.style.height = door.clientHeight + "px";   
             boxesClone.appendChild(resetBox);
+            //set the emojiii
             resetBox.textContent = "👄";
 
             // Set door's spinned data attribute to "0"
@@ -200,12 +219,17 @@
             door.replaceChild(boxesClone, boxes);
 
             // Add event listener to remove the mouth emoji when spinning
-            const spinnerButton = document.querySelector("#spinner");
-            spinnerButton.addEventListener("click", function removeEmoji() {
-                door.replaceChild(boxes, boxesClone);
-                spinnerButton.removeEventListener("click", removeEmoji);
-            });
-            
+            //  Select the button with the id "spinner"
+        const spinnerButton = document.querySelector("#spinner");
+        // Add a click event listener to the button
+        spinnerButton.addEventListener("click", function removeEmoji() {
+        // Replace a child element of the element with id "door"
+  //         Replace the child element boxesClone with boxes
+  door.replaceChild(boxes, boxesClone);
+
+  //Remove the click event listener to avoid further executions
+  spinnerButton.removeEventListener("click", removeEmoji);
+});
 
         }
 
