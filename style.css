@@ -1,5 +1,4 @@
-html,
-body {
+html, body {
     width: 100vw;
     height: 100vh;
     margin: 0;
@@ -8,11 +7,12 @@ body {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    
 }
 
 *,
 *::before,
-*::after{
+*::after {
     -webkit-box-sizing: inherit;
     -moz-box-sizing: inherit;
     box-sizing: inherit;
@@ -21,26 +21,32 @@ body {
 #app {
     width: 100%;
     height: 100%;
-    background: pink;
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url(assets/slotpink.png);
+    background-size: cover; 
+    background-position: center;
+       
 }
 
 .doors {
     display: flex;
+    
 }
 
 .door {
-    background: #c93667;
-    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4) inset;
-    width: 110px;
-    height: 170px;
+    background: black;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4) inset;
+    width: 90px;
+    height: 130px;
     overflow: hidden;
-    border-radius: 1ex;
-    margin: 1ch;
-    border: 10px solid #c93667;
+    border-radius: 2ex;
+    margin: .10ch;
+    border: 7px solid #c93667; 
+    margin-top: 60px;
+    text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 30px #ff69b4, 0 0 40px #ff69b4, 0 0 70px #ff69b4, 0 0 80px #ff69b4, 0 0 100px #ff69b4;
 }
 
 .boxes {
@@ -52,43 +58,82 @@ body {
     justify-content: center;
     align-items: center;
     align-items: center;
-    font-size: 4rem;  
+    font-size: 3rem;
+    
 }
-
 
 .buttons {
     margin: 1rem 0 2rem 0;
- }
- 
- 
- button {
-    cursor: pointer;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    margin: 0 0.2rem 0 0.2rem;
-    background-color: pink;
- }
- 
- 
- .info {
+    
+  
+}
+
+button {
+  background-color: black; 
+  border: none;
+  color: #c93667;
+  padding: 20px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius:90%;
+  text-shadow: 0 0 10px rgba(255, 255, 0, 0.8);
+  
+
+}
+    
+
+.info {
     position: fixed;
     bottom: 0;
-    /* width: 100px;*/
     text-align: center;
     font-weight: bold;
-    font-size: 20px;
- }
- 
- 
- .feeling-lucky-text {
+    font-size: 50px;   
+    
+}
+
+.feeling-lucky-text {
     font-family: 'Lobster', cursive;
-    font-size: 6.7rem;
-    color: black; 
-    margin: 20px; 
+    font-size: 6.5rem;
+    color: black;
+    margin: 0px;
     text-align: center;
-    position: fixed; 
-    top: 0; 
-    width: 100%; 
- }
- 
- 
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 30px #ff69b4, 0 0 40px #ff69b4, 0 0 70px #ff69b4, 0 0 80px #ff69b4, 0 0 100px #ff69b4;
+   
+        }
+
+    #resetScore {
+    font-size: 24px; 
+    padding: 15px 20px; 
+    margin-top: 20px; 
+        }
+
+#score {
+    font-size: 30px; 
+    font-weight: bold;
+    text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 30px #ff69b4, 0 0 40px #ff69b4, 0 0 70px #ff69b4, 0 0 80px #ff69b4, 0 0 100px #ff69b4;
+    
+}
+
+#resetButton,
+#spinButton {
+    font-family: 'YourDesiredFont', sans-serif;
+    font-size: 20px;
+    padding: 25px 20px; 
+    color: #ffd700; 
+    text-shadow: 0 0 10px #b8860b, 0 0 20px #b8860b, 0 0 30px #b8860b, 0 0 40px #b8860b, 0 0 70px #b8860b, 0 0 80px #b8860b, 0 0 100px #b8860b; 
+    border: 2px solid #ff69b4;
+
+}
+
+.buttons button {
+    font-family: 'YourDesiredFont', sans-serif;
+    font-size: 20px;
+    padding: 25px 20px;
+    margin-top: 30%;
+}
+    
