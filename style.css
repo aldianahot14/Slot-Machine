@@ -104,7 +104,7 @@ button {
     width: 100%;
     text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 30px #ff69b4, 0 0 40px #ff69b4, 0 0 70px #ff69b4, 0 0 80px #ff69b4, 0 0 100px #ff69b4;
    
-        }
+      }
 
     #resetScore {
     font-size: 24px; 
@@ -137,3 +137,17 @@ button {
     margin-top: 30%;
 }
     
+
+
+@media only screen and (max-width: 768px) {
+    .feeling-lucky-text {
+        font-size: 70px; 
+    }
+}
+
+
+@media only screen and (max-width: 480px) {
+    .feeling-lucky-text {
+        font-size: 50px; 
+    }
+}
