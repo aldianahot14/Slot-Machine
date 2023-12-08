@@ -1,16 +1,17 @@
 (function () {
     "use strict";
 
-    const items = ["🌸", "💖", "🎀", "🌷", "💘", "🌺", "🐷", "💋"];
+    const items = ["🌸", "💖", "🎀", "🌷", "💘", "🌺", "🐷", "💋"]; 
+    
+    document.querySelector('.info').textContent = items.join(" "); 
 
-    document.querySelector('.info').textContent = items.join(" ");
-
-    const doors = document.querySelectorAll(".door");
+    const doors = document.querySelectorAll(".door"); // Initializes a variable to keep track of the number of wins/lossCount and allowing 3 chances
     let winCount = 0;
     let lossCount = 0;
     let chances = 3; 
 
-    const winCountDisplay = document.querySelector('#winCount');
+//Select HTML element with ID 'winCount/loss' and store the reference
+    const winCountDisplay = document.querySelector('#winCount'); 
     const lossCountDisplay = document.querySelector('#lossCount');
 
     winCountDisplay.textContent = winCount;
@@ -23,8 +24,10 @@
     const resetScoreButton = document.getElementById('resetScore');
     resetScoreButton.addEventListener('click', resetScore);
 
+    // Function to handle the spin of the slot machine
     function spin() {
         if (chances > 0) {
+    // Initialize the spinning animation
             init(false, 1, 2);
 
             for (const door of doors) {
@@ -38,13 +41,14 @@
             if (result) {
                 displayWin();
             } else {
-                
+     // Delay the display of loss message by 2000 milliseconds (2 seconds)
                 setTimeout(displayLoss, 2000); 
             }
 
             chances--; 
         }
 
+     // Disable the spinner button when chances are zero - only have 3 chances
         if (chances === 0) {
             document.querySelector("#spinner").disabled = true; 
             document.querySelector('.info').textContent = "Game Over!"; 
@@ -56,6 +60,7 @@
     function checkResult() {
         const firstEmoji = doors[0].querySelector(".box").textContent;
 
+         // Check if all doors have the same emoji
         const allDoorsSame = [...doors].every(door => {
             const emoji = door.querySelector(".box").textContent;
             return emoji === firstEmoji;
@@ -63,6 +68,9 @@
 
         return allDoorsSame;
     }
+
+
+//display win message
 
     function displayWin() {
         winCount++;
@@ -74,6 +82,7 @@
         infoText.style.textShadow = "0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 30px #ff69b4";
     }
     
+// display loose message    
     function displayLoss() {
         lossCount++;
         lossCountDisplay.textContent = lossCount;
@@ -83,8 +92,10 @@
         infoText.style.color = '#000';  
         infoText.style.textShadow = "0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 30px #ff69b4";
     }
+    //initating the spin animation
     function init(firstInit = true, groups = 1, duration = 1) {
         for (const door of doors) {
+     // Set 'dataset.spinned' attribute to "0" for first initialization
             if (firstInit) {
                 door.dataset.spinned = "0";
             } else if (door.dataset.spinned === "1") {
@@ -124,6 +135,7 @@
                     { once: true }
                 );
 
+         // Create boxes with shuffled emojis
                 for (let i = pool.length - 1; i >= 0; i--) {
                     const box = document.createElement("div");
                     box.classList.add("box");
@@ -132,7 +144,7 @@
                     boxesClone.appendChild(box);
                     box.textContent = pool[i];
                 }
-
+            // What makes the emojis actually spin
                 boxesClone.style.transitionDuration = `${duration > 0 ? duration : 1}s`;
                 boxesClone.style.transform = `translateY(-${door.clientHeight * (pool.length - 1)}px)`;
                 door.replaceChild(boxesClone, boxes);
@@ -171,13 +183,14 @@
         document.querySelector('.info').textContent = "";
     }
 
+// Function to reset win and loss counts, chances, and enable spinner button
     function resetScore() {
         winCount = 0;
         lossCount = 0;
         winCountDisplay.textContent = winCount;
         lossCountDisplay.textContent = lossCount;
         chances = 3; 
-        document.querySelector("#spinner").disabled = false; 
+        document.querySelector("#spinner").disabled = false; //the player can initiate a new spin after resetting the scores.
         document.querySelector('.info').textContent = ""; 
     }
 

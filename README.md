@@ -3,7 +3,8 @@
 ## 
 Are you feeling lucky? Let's test your luck by spinning the slot machine and aiming for a winning combination. You only have three chances to win!
 
-### Getting Started:
+### Getting Started: 
+https://main--aldianaproject1slotmachine.netlify.app/
 
 #### Spin the Slot Machine:
 - Press the "Spin" button to initiate a spin of the slot machine.
