@@ -70,7 +70,7 @@
         
         const infoText = document.querySelector('.info');
         infoText.textContent = "You're lucky! You Win!";
-        infoText.style.color = '#000';  // Black text color
+        infoText.style.color = '#000';  
         infoText.style.textShadow = "0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 30px #ff69b4";
     }
     
@@ -80,7 +80,7 @@
     
         const infoText = document.querySelector('.info');
         infoText.textContent = "Sorry, You're not so lucky. Try Again!";
-        infoText.style.color = '#000';  // Black text color
+        infoText.style.color = '#000';  
         infoText.style.textShadow = "0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 30px #ff69b4";
     }
     function init(firstInit = true, groups = 1, duration = 1) {
